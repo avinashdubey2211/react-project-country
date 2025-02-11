@@ -167,7 +167,7 @@ nav ul {
   .menu-mobile {
     position: absolute;
     margin-bottom: 700px;
-    top: 10rem;
+    top: 8rem;
      left: 0;
    
     background-color: #0d1212;
@@ -229,10 +229,13 @@ nav ul {
     order: 1;
    
   }
-
+  .hero-image {
+    display: flex;
+  }
   .container .banner-image {
     width: 80%;
     order: 0;
+    /* display: flex; */
   }
 }
 
