@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { AppLayout } from "./components/Layout/AppLayout";
 
 import "./App.css";
@@ -10,38 +10,21 @@ import { Contact } from "./pages/Contact";
 import { ErrorPage } from "./pages/ErrorPage";
 import { CountryDetails } from "./components/Layout/CountryDetails";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <AppLayout />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "about",
-        element: <About />,
-      },
-      {
-        path: "country",
-        element: <Country />,
-      },
-      {
-        path: "country/:id",
-        element: <CountryDetails />,
-      },
-      {
-        path: "contact",
-        element: <Contact />,
-      },
-    ],
-  },
-]);
-
 const App = () => {
-  return <RouterProvider router={router}> </RouterProvider>;
+  return (
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="country" element={<Country />} />
+          <Route path="country/:id" element={<CountryDetails />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </HashRouter>
+  );
 };
 
 export default App;
